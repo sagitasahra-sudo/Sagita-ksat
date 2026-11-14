@@ -1,0 +1,28 @@
+import requests
+
+print("Mencari data cuaca BMKG...")
+
+kode_desa = "masukkan kode desa BPS"
+
+# Menggabungkan URL dengan variabel kode_desa menggunakan f-string
+url_bmkg = f"https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4={kemendagri}"
+
+suhu_bmkg_jogja =
+
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+    'Accept': 'application/json'
+}
+
+try:
+    response = requests.get(url_bmkg, headers=headers, timeout=10)
+
+    if response.status_code == 200:
+        data_cuaca = response.json()
+        print("Koneksi API Berhasil!")
+        print(f"Data Suhu Eksternal (BMKG): {suhu_bmkg_jogja} °C")
+    else:
+        print(f"Gagal memuat API (Status: {response.status_code}). Menggunakan suhu cadangan: {suhu_bmkg_jogja} °C")
+
+except Exception as e:
+    print(f"Koneksi error. Menggunakan suhu cadangan: {suhu_bmkg_jogja} °C")
